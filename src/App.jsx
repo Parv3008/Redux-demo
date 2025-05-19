@@ -1,15 +1,19 @@
-import './App.css'
-import Navbar from './components/Navbar'
-import Products from './pages/Products'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Products from './pages/Products';
+import Class from './pages/Class';
 
-function App() {
-
+const App = () => {
   return (
     <>
-      <Navbar/>
-      <Products/>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Products />} />
+        <Route path="/products" element={<Class />} />
+      </Routes>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

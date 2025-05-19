@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-white shadow-sm py-3">
+      <nav className="navbar navbar-expand-lg bg-white shadow-sm py-3 fixed-top">
         <div className="container">
-          <a className="navbar-brand fw-bold fs-4" href="#">
+          <Link className="navbar-brand fw-bold fs-4" to="/">
             Fake Store
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -22,30 +23,36 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
+                <Link className="nav-link" to="/">
+                  Function
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Products
-                </a>
+                <Link className="nav-link" to="/products">
+                  Class 
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to="/about">
                   About
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to="/contact">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
             <div className="buttons">
-              <a href="#" className="btn btn-outline-dark me-2">Login</a>
-              <a href="#" className="btn btn-outline-dark me-2">Register</a>
-              <a href="#" className="btn btn-outline-dark me-2">Cart(0)</a>
+              <Link to="#" className="btn btn-outline-dark me-2">
+                Login
+              </Link>
+              <Link to="#" className="btn btn-outline-dark me-2">
+                Register
+              </Link>
+              <Link to="#" className="btn btn-outline-dark me-2">
+                Cart(0)
+              </Link>
             </div>
           </div>
         </div>

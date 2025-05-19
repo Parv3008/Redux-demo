@@ -1,2 +1,3 @@
 export const SET_PRODUCTS = "SET_PRODUCTS";
 export const SET_CATEGORY_FILTER = "SET_CATEGORY_FILTER";
+export const SET_LOADING = "SET_LOADING";
