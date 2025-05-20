@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import ThemeContext from "../context/ThemeContext";
 
 const Navbar = () => {
+  const { dark, toggleTheme } = useContext(ThemeContext);
+
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-white shadow-sm py-3 fixed-top">
+      <nav className={`navbar navbar-expand-lg fixed-top shadow-sm py-3 ${dark ? "bg-dark navbar-dark" : "bg-light navbar-light"}`}>
         <div className="container">
           <Link className="navbar-brand fw-bold fs-4" to="/">
             Fake Store
@@ -44,15 +47,16 @@ const Navbar = () => {
               </li>
             </ul>
             <div className="buttons">
-              <Link to="#" className="btn btn-outline-dark me-2">
+              <Link to="#" className={`btn me-2 ${dark ? "btn-outline-light" : "btn-outline-dark"}`}>
                 Login
               </Link>
-              <Link to="#" className="btn btn-outline-dark me-2">
+              <Link to="#" className={`btn me-2 ${dark ? "btn-outline-light" : "btn-outline-dark"}`}>
                 Register
               </Link>
-              <Link to="#" className="btn btn-outline-dark me-2">
+              <Link to="#" className={`btn me-2 ${dark ? "btn-outline-light" : "btn-outline-dark"}`}>
                 Cart(0)
               </Link>
+              <button className={`btn me-2 ${dark ? "btn-outline-light" : "btn-outline-dark"}`} onClick={toggleTheme}>Change Theme</button>
             </div>
           </div>
         </div>

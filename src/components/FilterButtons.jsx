@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategoryFilter } from "../redux/actions/productActions";
+import ThemeContext from "../context/ThemeContext";
 
 const FilterButtons = () => {
+  const { dark } = useContext(ThemeContext);
   const dispatch = useDispatch();
   const categoryFilter = useSelector((state) => state.product.categoryFilter);
 
@@ -20,8 +22,8 @@ const FilterButtons = () => {
         <button
           key={cat}
           className={`btn me-2 ${
-            categoryFilter === cat ? "btn-dark" : "btn-outline-dark"
-          }`}
+            categoryFilter === cat ? "btn-secondary text-light" : "btn-outline-secondary"
+          } ${dark ? "btn-outline-light" : "btn-outline-dark"}`}
           onClick={() => dispatch(setCategoryFilter(cat))}
         >
           {cat}
