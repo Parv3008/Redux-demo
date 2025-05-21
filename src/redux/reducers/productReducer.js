@@ -1,22 +1,30 @@
-import { SET_PRODUCTS, SET_CATEGORY_FILTER, SET_LOADING } from "../types/productTypes";
+import { produce } from "immer";
+import {
+  SET_PRODUCTS,
+  SET_CATEGORY_FILTER,
+  SET_LOADING,
+} from "../types/productTypes";
 
 const initialState = {
   allProducts: [],
   categoryFilter: "all",
-  loading: false, 
+  loading: false,
 };
 
-const productReducer = (state = initialState, action) => {
+const productReducer = produce((state = initialState, action) => {
   switch (action.type) {
     case SET_PRODUCTS:
-      return { ...state, allProducts: action.payload };
+      state.allProducts = action.payload;
+      break;
     case SET_CATEGORY_FILTER:
-      return { ...state, categoryFilter: action.payload };
+      state.categoryFilter = action.payload;
+      break;
     case SET_LOADING:
-      return { ...state, loading: action.payload }; 
+      state.loading = action.payload;
+      break;
     default:
       return state;
   }
-};
+}, initialState);
 
 export default productReducer;

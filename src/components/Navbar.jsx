@@ -1,16 +1,18 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import ThemeContext from "../context/ThemeContext";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const { dark, toggleTheme } = useContext(ThemeContext);
+  const cartItems = useSelector((state) => state.cart.items);
 
   return (
     <div>
       <nav className={`navbar navbar-expand-lg fixed-top shadow-sm py-3 ${dark ? "bg-dark navbar-dark" : "bg-light navbar-light"}`}>
         <div className="container">
           <Link className="navbar-brand fw-bold fs-4" to="/">
-            Fake Store
+            OG Store
           </Link>
           <button
             className="navbar-toggler"
@@ -27,12 +29,12 @@ const Navbar = () => {
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link className="nav-link" to="/">
-                  Function
+                  Home
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/products">
-                  Class 
+                  Products 
                 </Link>
               </li>
               <li className="nav-item">
@@ -41,22 +43,22 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/contact">
-                  Contact
+                <Link className="nav-link" to="/cart">
+                  Cart
                 </Link>
               </li>
             </ul>
             <div className="buttons">
-              <Link to="#" className={`btn me-2 ${dark ? "btn-outline-light" : "btn-outline-dark"}`}>
+              {/* <Link to="#" className={`btn me-2 ${dark ? "btn-outline-light" : "btn-outline-dark"}`}>
                 Login
               </Link>
               <Link to="#" className={`btn me-2 ${dark ? "btn-outline-light" : "btn-outline-dark"}`}>
                 Register
+              </Link> */}
+              <Link to="cart" className={`btn me-2 ${dark ? "btn-outline-light" : "btn-outline-dark"}`}>
+                Cart({cartItems.length})
               </Link>
-              <Link to="#" className={`btn me-2 ${dark ? "btn-outline-light" : "btn-outline-dark"}`}>
-                Cart(0)
-              </Link>
-              <button className={`btn me-2 ${dark ? "btn-outline-light" : "btn-outline-dark"}`} onClick={toggleTheme}>Change Theme</button>
+              <button className={`btn me-2 ${dark ? "btn-outline-light" : "btn-outline-dark"}`} onClick={toggleTheme}>{dark? "🌞 Light Mode": "🌑 Dark Mode"}</button>
             </div>
           </div>
         </div>
